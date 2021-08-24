@@ -1,40 +1,37 @@
-import java.util.ArrayList;
-import java.util.List;
+import java.io.IOException;
 import java.util.Scanner;
 
 public class DictionaryEngine {
 
-    public void runDictionary() {
+    public void runDictionary() throws IOException {
         DictionarySteps dictionarySteps = new DictionarySteps();
 
         System.out.println(Constants.MENU_TITLE);
 
-        Scanner sc = new Scanner(System.in);
-        int str = sc.nextInt();
+        Scanner scanner = new Scanner(System.in);
+        int menuItem = scanner.nextInt();
 
-        List<String> words = new ArrayList<>();
+        if (menuItem != 3) {
+            boolean isInfinite = true;
 
-        if (str != 3) {
-            boolean boo = true;
-
-            while (boo) {
-                switch (str) {
+            while (isInfinite) {
+                switch (menuItem) {
                     case (1):
                         do {
-                            dictionarySteps.addWord(words);
-                            str = sc.nextInt();
+                            dictionarySteps.addWord();
+                            menuItem = scanner.nextInt();
                         }
-                        while (str == 1);
+                        while (menuItem == 1);
                         break;
 
                     case (2):
-                        dictionarySteps.browseWords(words);
-                        str = sc.nextInt();
+                        dictionarySteps.browseWords();
+                        menuItem = scanner.nextInt();
                         break;
 
                     case (3):
                         dictionarySteps.exitDictionary();
-                        boo = false;
+                        isInfinite = false;
                 }
             }
         }
