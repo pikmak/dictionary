@@ -4,13 +4,13 @@ import java.util.Scanner;
 public class DictionarySteps {
 
     public void addWord() throws IOException {
-        Scanner sc1 = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
 
         System.out.println("\n" + Constants.ENGLISH_WORD_INPUT);
-        String word1 = addStringAndCheckIsEmpty(sc1);
+        String word1 = addStringAndCheckIsEmpty(scanner);
 
         System.out.println("\n" + Constants.RUSSIAN_WORD_INPUT);
-        String word2 = addStringAndCheckIsEmpty(sc1);
+        String word2 = addStringAndCheckIsEmpty(scanner);
 
         String dictionaryWord = word1.trim() + " - " + word2.trim();
 
