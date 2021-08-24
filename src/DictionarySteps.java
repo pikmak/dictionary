@@ -16,7 +16,7 @@ public class DictionarySteps {
 
         String dictionaryWord = word1.trim() + " - " + word2.trim();
 
-        FileWriter fileWriter = new FileWriter(Constants.DICTIONARY_FILENAME, true);
+        FileWriter fileWriter = new FileWriter(Constants.DICTIONARY_FILE_NAME, true);
 
         fileWriter.write(dictionaryWord + "\n");
         fileWriter.close();
@@ -26,7 +26,7 @@ public class DictionarySteps {
 
     public void browseWords() throws IOException {
         try {
-            FileReader fileReader = new FileReader(Constants.DICTIONARY_FILENAME);
+            FileReader fileReader = new FileReader(Constants.DICTIONARY_FILE_NAME);
             Scanner scanner = new Scanner(fileReader);
 
             if(scanner.hasNextLine() == false) {
@@ -53,7 +53,7 @@ public class DictionarySteps {
 
     public void deleteWord() throws IOException {
         try {
-            Scanner scanner = new Scanner(new File(Constants.DICTIONARY_FILENAME));
+            Scanner scanner = new Scanner(new File(Constants.DICTIONARY_FILE_NAME));
             List<String> dictionaryWords = new ArrayList<>();
             while (scanner.hasNextLine()) {
                 dictionaryWords.add(scanner.nextLine());
@@ -66,10 +66,10 @@ public class DictionarySteps {
             if (wordIndex >= 0 && wordIndex <= dictionaryWords.size()) {
                 dictionaryWords.remove(wordIndex - 1);
 
-                PrintWriter printWriter = new PrintWriter(Constants.DICTIONARY_FILENAME);
+                PrintWriter printWriter = new PrintWriter(Constants.DICTIONARY_FILE_NAME);
                 printWriter.close();
 
-                FileWriter fileWriter = new FileWriter(Constants.DICTIONARY_FILENAME, true);
+                FileWriter fileWriter = new FileWriter(Constants.DICTIONARY_FILE_NAME, true);
                 for (int i = 0; i < dictionaryWords.size(); i++) {
                     fileWriter.write(dictionaryWords.get(i) + "\n");
                 }
@@ -77,7 +77,7 @@ public class DictionarySteps {
             }
 
             else
-                System.out.println("Please input correct word's index");
+                System.out.println(Constants.REMOVE_WORD_ERROR_MESSAGE);
         }
 
         catch(FileNotFoundException e) {
