@@ -7,5 +7,7 @@ class Constants {
     static final String EMPTY_STRING = "String is empty. Enter some word";
     static final String EXIT_MESSAGE = "Exit";
     static final String DICTIONARY_FILE_PATH = "D://ideaprj/Dictionary/Dictionary.txt";
+    static final String DICTIONARY_FILENAME = "Dictionary.txt";
     static final String DICTIONARY_IS_EMPTY = "Dictionary is empty";
+    static final String DICTIONARY_FILE_IS_NOT_FOUND = "Dictionary file is not created yet, please add some words to it";
 }
