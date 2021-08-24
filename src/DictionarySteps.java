@@ -3,6 +3,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+
 public class DictionarySteps {
 
     public void addWord() throws IOException {
@@ -59,25 +60,30 @@ public class DictionarySteps {
                 dictionaryWords.add(scanner.nextLine());
             }
 
-            System.out.println(Constants.REMOVE_WORD_MESSAGE);
-
-            int wordIndex = (new Scanner(System.in)).nextInt();
-
-            if (wordIndex >= 0 && wordIndex <= dictionaryWords.size()) {
-                dictionaryWords.remove(wordIndex - 1);
-
-                PrintWriter printWriter = new PrintWriter(Constants.DICTIONARY_FILE_NAME);
-                printWriter.close();
-
-                FileWriter fileWriter = new FileWriter(Constants.DICTIONARY_FILE_NAME, true);
-                for (int i = 0; i < dictionaryWords.size(); i++) {
-                    fileWriter.write(dictionaryWords.get(i) + "\n");
-                }
-                fileWriter.close();
+            if (dictionaryWords.size() == 0) {
+                System.out.println(Constants.DICTIONARY_IS_EMPTY);
             }
 
-            else
-                System.out.println(Constants.REMOVE_WORD_ERROR_MESSAGE);
+            else {
+
+                System.out.println(Constants.REMOVE_WORD_MESSAGE);
+
+                int wordIndex = (new Scanner(System.in)).nextInt();
+
+                if (wordIndex >= 0 && wordIndex <= dictionaryWords.size()) {
+                    dictionaryWords.remove(wordIndex - 1);
+
+                    PrintWriter printWriter = new PrintWriter(Constants.DICTIONARY_FILE_NAME);
+                    printWriter.close();
+
+                    FileWriter fileWriter = new FileWriter(Constants.DICTIONARY_FILE_NAME, true);
+                    for (int i = 0; i < dictionaryWords.size(); i++) {
+                        fileWriter.write(dictionaryWords.get(i) + "\n");
+                    }
+                    fileWriter.close();
+                } else
+                    System.out.println(Constants.REMOVE_WORD_ERROR_MESSAGE);
+            }
         }
 
         catch(FileNotFoundException e) {
@@ -87,6 +93,14 @@ public class DictionarySteps {
         finally {
             System.out.println(Constants.MENU_TITLE);
         }
+    }
+
+    public void copyDictionary(String filePathAndName) {
+
+    }
+
+    public void deleteDictionary() {
+
     }
 
     public void exitDictionary() {
