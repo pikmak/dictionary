@@ -11,7 +11,7 @@ public class DictionaryEngine {
         Scanner scanner = new Scanner(System.in);
         int menuItem = scanner.nextInt();
 
-        if (menuItem != 3) {
+        if (menuItem != 4) {
             boolean isInfinite = true;
 
             while (isInfinite) {
@@ -30,6 +30,11 @@ public class DictionaryEngine {
                         break;
 
                     case (3):
+                        dictionarySteps.deleteWord();
+                        menuItem = scanner.nextInt();
+                        break;
+
+                    case (4):
                         dictionarySteps.exitDictionary();
                         isInfinite = false;
                 }

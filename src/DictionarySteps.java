@@ -1,4 +1,6 @@
 import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class DictionarySteps {
@@ -41,6 +43,38 @@ public class DictionarySteps {
         }
 
         catch(FileNotFoundException ex) {
+            System.out.println(Constants.DICTIONARY_FILE_IS_NOT_FOUND);
+        }
+
+        finally {
+            System.out.println(Constants.MENU_TITLE);
+        }
+    }
+
+    public void deleteWord() throws IOException {
+        try {
+            Scanner scanner = new Scanner(new File(Constants.DICTIONARY_FILENAME));
+            List<String> dictionaryWords = new ArrayList<>();
+            while (scanner.hasNextLine()) {
+                dictionaryWords.add(scanner.nextLine());
+            }
+
+            System.out.println(Constants.REMOVE_WORD_MESSAGE);
+
+            int wordIndex = (new Scanner(System.in)).nextInt();
+            dictionaryWords.remove(wordIndex - 1);
+
+            PrintWriter printWriter = new PrintWriter(Constants.DICTIONARY_FILENAME);
+            printWriter.close();
+
+            FileWriter fileWriter = new FileWriter(Constants.DICTIONARY_FILENAME, true);
+            for (int i = 0; i < dictionaryWords.size(); i++) {
+                fileWriter.write(dictionaryWords.get(i) + "\n");
+            }
+            fileWriter.close();
+        }
+
+        catch(FileNotFoundException e) {
             System.out.println(Constants.DICTIONARY_FILE_IS_NOT_FOUND);
         }
 
