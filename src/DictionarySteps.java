@@ -62,16 +62,22 @@ public class DictionarySteps {
             System.out.println(Constants.REMOVE_WORD_MESSAGE);
 
             int wordIndex = (new Scanner(System.in)).nextInt();
-            dictionaryWords.remove(wordIndex - 1);
 
-            PrintWriter printWriter = new PrintWriter(Constants.DICTIONARY_FILENAME);
-            printWriter.close();
+            if (wordIndex >= 0 && wordIndex <= dictionaryWords.size()) {
+                dictionaryWords.remove(wordIndex - 1);
 
-            FileWriter fileWriter = new FileWriter(Constants.DICTIONARY_FILENAME, true);
-            for (int i = 0; i < dictionaryWords.size(); i++) {
-                fileWriter.write(dictionaryWords.get(i) + "\n");
+                PrintWriter printWriter = new PrintWriter(Constants.DICTIONARY_FILENAME);
+                printWriter.close();
+
+                FileWriter fileWriter = new FileWriter(Constants.DICTIONARY_FILENAME, true);
+                for (int i = 0; i < dictionaryWords.size(); i++) {
+                    fileWriter.write(dictionaryWords.get(i) + "\n");
+                }
+                fileWriter.close();
             }
-            fileWriter.close();
+
+            else
+                System.out.println("Please input correct word's index");
         }
 
         catch(FileNotFoundException e) {
