@@ -17,11 +17,8 @@ public class DictionaryEngine {
             while (isInfinite) {
                 switch (menuItem) {
                     case (1):
-                        do {
-                            dictionarySteps.addWord();
-                            menuItem = scanner.nextInt();
-                        }
-                        while (menuItem == 1);
+                        dictionarySteps.addWord();
+                        menuItem = scanner.nextInt();
                         break;
 
                     case (2):
