@@ -1,3 +1,4 @@
+import java.io.File;
 import java.util.List;
 import java.util.Scanner;
 
@@ -15,6 +16,8 @@ public class DictionarySteps {
         words.add(word1.trim() + " - " + word2.trim());
 
         System.out.println("\n" + Constants.MENU_TITLE);
+
+        File file = new File("D://idea prj/Dictionary");
     }
 
     public void browseWords(List<String> words) {
